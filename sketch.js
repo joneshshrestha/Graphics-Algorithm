@@ -53,25 +53,45 @@ function DDA_line_drawing(x1, y1, x2, y2) {
 }
 
 function bresenham_line_drawing(x1, y1, x2, y2) {
+	let m = (y2 - y1) / (x2 - x1)
 	let dx = x2 - x1
 	let dy = y2 - y1
-	let p = 2 * dy - dx
 	let x = x1, y = y1
 	let i = 1
 	point(x, y)
-	while (i <= dx) {
-		if (p < 0) {
-			x = x + 1
-			p = p + 2 * dy
-			point(x, y)
-			i++
-		} else {
-			x = x + 1
-			y = y + 1
-			p = p + (2 * dy) - (2 * dx)
-			point(x, y)
-			i++
-		}	
+	if (abs(m) < 1) {
+		let p = 2 * dy - dx
+		while (i <= dx) {
+			if (p < 0) {
+				x = x + 1
+				p = p + 2 * dy
+				point(x, y)
+				i++
+			} else {
+				x = x + 1
+				y = y + 1
+				p = p + (2 * dy) - (2 * dx)
+				point(x, y)
+				i++
+			}	
+		}
+	} else { 
+		let p = 2 * dx - dy
+		while (i <= dy) {
+			if (p < 0) {
+				y = y + 1
+				p = p + 2 * dx
+				point(x, y)
+				i++
+			} else {
+				x = x + 1
+				y = y + 1
+				p = p + (2 * dx) - (2 * dy)
+				point(x, y)
+				i++
+			}	
+		}
 	}
+	
 
 }
