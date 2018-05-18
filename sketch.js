@@ -5,8 +5,7 @@ function setup() {
 	background(211)
 	//direct_line_drawing(10, 10, 150, 180)
 	//DDA_line_drawing(10, 10, 150, 180)
-	//bresenham_line_drawing(10, 10, 150, 180)
-	midpoint_circle_drawing(300, 300, 200)
+	bresenham_line_drawing(10, 10, 150, 180)
 }
 
 function draw() {
@@ -93,33 +92,6 @@ function bresenham_line_drawing(x1, y1, x2, y2) {
 			}	
 		}
 	}
-}
+	
 
-function midpoint_circle_drawing(xc, yc, r) {
-	let x = 0, y = r
-	let p
-	point(x, y)
-	if (Number.isInteger(r)) {
-		p = 1 - r
-	} else {
-		p = (5 / 4) - r
-	}
-	while (x <= y) {
-		if (p < 0) {
-			x = x + 1
-			p = p + 2 * x + 1
-		} else {
-			x = x + 1
-			y = y - 1
-			p = p + (2 * x) - (2 * y) + 1
-		}
-		point(x + xc, y + yc)
-		point(-x + xc, y + yc)
-		point(x + xc, -y + yc)
-		point(-x + xc, -y + yc)
-		point(y + yc, x + xc)
-		point(-y + yc, x + xc)
-		point(y + yc, -x + xc)
-		point(-y + yc, -x + xc)
-	}
 }
