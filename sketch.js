@@ -11,7 +11,8 @@ function setup() {
 	//cartesian_circle_drawing(300, 300, 200)
 	//polar_circle_drawing(300, 300, 200)
 	//midpoint_circle_drawing(300, 300, 200)
-	cartesian_ellipse_drawing(300, 300, 100, 200)
+	//cartesian_ellipse_drawing(300, 300, 100, 200)
+	polar_ellipse_drawing(300, 300, 100, 200)
 	
 }
 
@@ -179,5 +180,15 @@ function cartesian_ellipse_drawing(xc, yc, rx, ry) {
 		point(-x2 + xc, y2 + yc)
 		point(x2 + xc, -y2 + yc)
 		point(-x2 + xc, -y2 + yc)
+	}
+}
+
+function polar_ellipse_drawing(xc, yc, rx, ry) {
+	let theta = 0
+	while (theta <= 2 * Math.PI) { 
+		x = xc + rx * Math.cos(theta)
+		y = yc + ry * Math.sin(theta)
+		theta = theta + Math.PI/180
+		point(x, y)
 	}
 }
