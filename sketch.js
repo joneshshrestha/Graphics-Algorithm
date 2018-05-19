@@ -1,4 +1,5 @@
 let x1, y1, x2, y2
+let xc, yc, r
 
 function setup() {
 	createCanvas(windowWidth,windowHeight)
@@ -6,7 +7,8 @@ function setup() {
 	//direct_line_drawing(10, 10, 150, 180)
 	//DDA_line_drawing(10, 10, 150, 180)
 	//bresenham_line_drawing(10, 10, 150, 180)
-	midpoint_circle_drawing(300, 300, 200)
+	//midpoint_circle_drawing(300, 300, 200)
+	cartesian_circle_drawing(300, 300, 200)
 }
 
 function draw() {
@@ -95,10 +97,28 @@ function bresenham_line_drawing(x1, y1, x2, y2) {
 	}
 }
 
+function cartesian_circle_drawing(xc, yc, r) {
+	let x = 0, y = r
+	point(x + xc, y + yc)
+	while (x <= y) {
+		x = x + 1
+		y = Math.sqrt((r * r) - (x * x))
+		point(x + xc, y + yc)
+		point(-x + xc, y + yc)
+		point(x + xc, -y + yc)
+		point(-x + xc, -y + yc)
+		point(y + yc, x + xc)
+		point(-y + yc, x + xc)
+		point(y + yc, -x + xc)
+		point(-y + yc, -x + xc)
+
+	}
+}
+
 function midpoint_circle_drawing(xc, yc, r) {
 	let x = 0, y = r
 	let p
-	point(x, y)
+	point(x + xc, y + yc)
 	if (Number.isInteger(r)) {
 		p = 1 - r
 	} else {
