@@ -8,7 +8,8 @@ function setup() {
 	//DDA_line_drawing(10, 10, 150, 180)
 	//bresenham_line_drawing(10, 10, 150, 180)
 	//midpoint_circle_drawing(300, 300, 200)
-	cartesian_circle_drawing(300, 300, 200)
+	//cartesian_circle_drawing(300, 300, 200)
+	polar_circle_drawing(300, 300, 200)
 }
 
 function draw() {
@@ -112,6 +113,17 @@ function cartesian_circle_drawing(xc, yc, r) {
 		point(y + yc, -x + xc)
 		point(-y + yc, -x + xc)
 
+	}
+}
+
+function polar_circle_drawing(xc, yc, r) {
+	let theta = 0
+	while (theta <= (2 * Math.PI)) {
+		x = xc + r * Math.cos(theta)
+		y = yc + r * Math.sin(theta)
+		theta = theta + (Math.PI/180)
+		console.log(theta)
+		point(x, y)
 	}
 }
 
