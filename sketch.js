@@ -1,5 +1,6 @@
 let x1, y1, x2, y2
 let xc, yc, r
+let rx, ry
 
 function setup() {
 	createCanvas(windowWidth,windowHeight)
@@ -7,9 +8,11 @@ function setup() {
 	//direct_line_drawing(10, 10, 150, 180)
 	//DDA_line_drawing(10, 10, 150, 180)
 	//bresenham_line_drawing(10, 10, 150, 180)
-	//midpoint_circle_drawing(300, 300, 200)
 	//cartesian_circle_drawing(300, 300, 200)
-	polar_circle_drawing(300, 300, 200)
+	//polar_circle_drawing(300, 300, 200)
+	//midpoint_circle_drawing(300, 300, 200)
+	cartesian_ellipse_drawing(300, 300, 100, 200)
+	
 }
 
 function draw() {
@@ -153,5 +156,28 @@ function midpoint_circle_drawing(xc, yc, r) {
 		point(-y + yc, x + xc)
 		point(y + yc, -x + xc)
 		point(-y + yc, -x + xc)
+	}
+}
+
+function cartesian_ellipse_drawing(xc, yc, rx, ry) {
+	//1st region
+	let x1 = 0, y1 = ry
+	while (rx*rx*y1 >= ry*ry*x1) {
+		x1 = x1 + 1
+		y1 = (1/rx) * Math.sqrt(rx*rx*ry*ry - ry*ry*x1*x1)
+		point(x1 + xc, y1 + yc)
+		point(-x1 + xc, y1 + yc)
+		point(x1 + xc, -y1 + yc)
+		point(-x1 + xc, -y1 + yc)
+	}
+	//2nd region
+	let x2 = rx, y2 = 0
+	while (rx*rx*y2 <= ry*ry*x2) {
+		x2 = (1/ry) * Math.sqrt(rx*rx*ry*ry - rx*rx*y2*y2)
+		y2 = y2 + 1
+		point(x2 + xc, y2 + yc)
+		point(-x2 + xc, y2 + yc)
+		point(x2 + xc, -y2 + yc)
+		point(-x2 + xc, -y2 + yc)
 	}
 }
