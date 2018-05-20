@@ -1,4 +1,4 @@
-# Graphics-Algorithm
+# Graphics Algorithms
 Different output primitives algorithms with JavaScript.
 
 - [x] Direct Line Drawing Algorithm
