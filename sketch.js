@@ -7,12 +7,12 @@ function setup() {
 	background(211)
 	//direct_line_drawing(10, 10, 150, 180)
 	//DDA_line_drawing(10, 10, 150, 180)
-	//bresenham_line_drawing(10, 10, 150, 180)
+	bresenham_line_drawing(10, 10, 150, 180)
 	//cartesian_circle_drawing(300, 300, 200)
 	//polar_circle_drawing(300, 300, 200)
 	//midpoint_circle_drawing(300, 300, 200)
 	//cartesian_ellipse_drawing(300, 300, 100, 200)
-	polar_ellipse_drawing(300, 300, 100, 200)
+	//polar_ellipse_drawing(300, 300, 100, 200)
 	
 }
 
@@ -69,7 +69,7 @@ function bresenham_line_drawing(x1, y1, x2, y2) {
 	point(x, y)
 	if (abs(m) < 1) {
 		let p = 2 * dy - dx
-		while (i <= dx) {
+		while (i <= abs(dx)) {
 			if (p < 0) {
 				x = x + 1
 				p = p + 2 * dy
@@ -85,7 +85,7 @@ function bresenham_line_drawing(x1, y1, x2, y2) {
 		}
 	} else { 
 		let p = 2 * dx - dy
-		while (i <= dy) {
+		while (i <= abs(dy)) {
 			if (p < 0) {
 				y = y + 1
 				p = p + 2 * dx
@@ -191,4 +191,8 @@ function polar_ellipse_drawing(xc, yc, rx, ry) {
 		theta = theta + Math.PI/180
 		point(x, y)
 	}
+}
+
+function midpoint_ellipse_drawing() {
+	
 }
