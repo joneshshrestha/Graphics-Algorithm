@@ -7,10 +7,10 @@ function setup() {
 	background(211)
 	//direct_line_drawing(10, 10, 150, 180)
 	//DDA_line_drawing(10, 10, 150, 180)
-	bresenham_line_drawing(10, 10, 150, 180)
-	//cartesian_circle_drawing(300, 300, 200)
-	//polar_circle_drawing(300, 300, 200)
-	//midpoint_circle_drawing(300, 300, 200)
+	//bresenham_line_drawing(10, 10, 150, 180)
+	//cartesian_circle_drawing(300, 200, 200)
+	//polar_circle_drawing(300, 200, 200)
+	midpoint_circle_drawing(300, 200, 200)
 	//cartesian_ellipse_drawing(300, 300, 100, 200)
 	//polar_ellipse_drawing(300, 300, 100, 200)
 	
@@ -105,17 +105,17 @@ function bresenham_line_drawing(x1, y1, x2, y2) {
 function cartesian_circle_drawing(xc, yc, r) {
 	let x = 0, y = r
 	point(x + xc, y + yc)
-	while (x <= y) {
+	while (x <= y) {	//upto x = y line
 		x = x + 1
 		y = Math.sqrt((r * r) - (x * x))
 		point(x + xc, y + yc)
 		point(-x + xc, y + yc)
 		point(x + xc, -y + yc)
 		point(-x + xc, -y + yc)
-		point(y + yc, x + xc)
-		point(-y + yc, x + xc)
-		point(y + yc, -x + xc)
-		point(-y + yc, -x + xc)
+		point(y + xc, x + yc)
+		point(-y + xc, x + yc)
+		point(y + xc, -x + yc)
+		point(-y + xc, -x + yc)
 
 	}
 }
@@ -153,10 +153,10 @@ function midpoint_circle_drawing(xc, yc, r) {
 		point(-x + xc, y + yc)
 		point(x + xc, -y + yc)
 		point(-x + xc, -y + yc)
-		point(y + yc, x + xc)
-		point(-y + yc, x + xc)
-		point(y + yc, -x + xc)
-		point(-y + yc, -x + xc)
+		point(y + xc, x + yc)
+		point(-y + xc, x + yc)
+		point(y + xc, -x + yc)
+		point(-y + xc, -x + yc)
 	}
 }
 
