@@ -1,6 +1,9 @@
 # Graphics Algorithms
 Different output primitives algorithms with JavaScript.
 
+- [x] House (Line Drawing Algorithm)
+- [x] Line Graph (DDA)
+- [ ] Pie Chart (Mid Point Circle Algorithm)
 - [x] Direct Line Drawing Algorithm
 - [x] DDA Line Drawing Algorithm
 - [x] Bresenham Line Drawing Algorithm
