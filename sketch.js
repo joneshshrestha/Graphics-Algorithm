@@ -10,10 +10,10 @@ function setup() {
 	//bresenham_line_drawing(10, 10, 150, 180)
 	//cartesian_circle_drawing(300, 200, 200)
 	//polar_circle_drawing(300, 200, 200)
-	midpoint_circle_drawing(300, 200, 200)
+	//midpoint_circle_drawing(300, 200, 200)
 	//cartesian_ellipse_drawing(300, 300, 100, 200)
 	//polar_ellipse_drawing(300, 300, 100, 200)
-	
+	midpoint_ellipse_drawing(300, 300, 100, 200)
 }
 
 function draw() {
@@ -164,22 +164,22 @@ function cartesian_ellipse_drawing(xc, yc, rx, ry) {
 	//1st region
 	let x1 = 0, y1 = ry
 	while (rx*rx*y1 >= ry*ry*x1) {
-		x1 = x1 + 1
-		y1 = (1/rx) * Math.sqrt(rx*rx*ry*ry - ry*ry*x1*x1)
 		point(x1 + xc, y1 + yc)
 		point(-x1 + xc, y1 + yc)
 		point(x1 + xc, -y1 + yc)
 		point(-x1 + xc, -y1 + yc)
+		x1 = x1 + 1
+		y1 = (1/rx) * Math.sqrt(rx*rx*ry*ry - ry*ry*x1*x1)	
 	}
 	//2nd region
 	let x2 = rx, y2 = 0
 	while (rx*rx*y2 <= ry*ry*x2) {
-		x2 = (1/ry) * Math.sqrt(rx*rx*ry*ry - rx*rx*y2*y2)
-		y2 = y2 + 1
 		point(x2 + xc, y2 + yc)
 		point(-x2 + xc, y2 + yc)
 		point(x2 + xc, -y2 + yc)
 		point(-x2 + xc, -y2 + yc)
+		x2 = (1/ry) * Math.sqrt(rx*rx*ry*ry - rx*rx*y2*y2)
+		y2 = y2 + 1		
 	}
 }
 
@@ -193,6 +193,43 @@ function polar_ellipse_drawing(xc, yc, rx, ry) {
 	}
 }
 
-function midpoint_ellipse_drawing() {
-	
+function midpoint_ellipse_drawing(xc, yc, rx, ry) {
+	let x = 0, y = ry
+	point(x + xc, y + yc)
+	point(-x + xc, y + yc)
+	point(x + xc, -y + yc)
+	point(-x + xc, -y + yc)
+	let p1, p2
+	// for region 1
+	p1 = (ry * ry) - (rx * rx * ry)+ (0.25 * rx * rx)
+	while ((2 * ry * ry * x) <= (2 * rx * rx * y)) {
+		if (p1 < 0) {
+			x = x + 1
+			p1 = p1 + (2 * ry * ry * x) + (ry * ry) 
+		} else {
+			x = x + 1
+			y = y - 1
+			p1 = p1 + (2 * ry * ry * x) - (2 * rx * rx * y) + (ry * ry)
+		}
+		point(x + xc, y + yc)
+		point(-x + xc, y + yc)
+		point(x + xc, -y + yc)
+		point(-x + xc, -y + yc)
+	}
+	// for region 2
+	p2 = ((x + 0.5) * (x + 0.5) * ry * ry) + ((y - 1) * (y - 1) * rx * rx) - (rx * rx * ry * ry)
+	while (y != 0) {
+		if (p2 > 0) {
+			y = y - 1
+			p2 = p2 - (2 * y * rx * rx) + (rx * rx) 
+		} else {
+			x = x + 1
+			y = y - 1
+			p2 = p2 - (2 * y * rx * rx) + (2 * x * ry * ry) + (rx * rx)  
+		}
+		point(x + xc, y + yc)
+		point(-x + xc, y + yc)
+		point(x + xc, -y + yc)
+		point(-x + xc, -y + yc)
+	} 
 }
