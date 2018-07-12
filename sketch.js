@@ -1,6 +1,7 @@
 let x1, y1, x2, y2
 let xc, yc, r
 let rx, ry
+let tx, ty
 
 function setup() {
 	createCanvas(windowWidth,windowHeight)
@@ -13,7 +14,8 @@ function setup() {
 	//midpoint_circle_drawing(300, 200, 200)
 	//cartesian_ellipse_drawing(300, 300, 100, 200)
 	//polar_ellipse_drawing(300, 300, 100, 200)
-	midpoint_ellipse_drawing(300, 300, 100, 200)
+	//midpoint_ellipse_drawing(300, 300, 100, 200)
+	translation(30, 75, 58, 20, 86, 75, 100, 100)
 }
 
 function draw() {
@@ -231,5 +233,16 @@ function midpoint_ellipse_drawing(xc, yc, rx, ry) {
 		point(-x + xc, y + yc)
 		point(x + xc, -y + yc)
 		point(-x + xc, -y + yc)
-	} 
+	}
+}
+
+function translation(x1, y1, x2, y2, x3, y3, tx, ty) {
+	triangle(x1, y1, x2, y2, x3, y3)
+	x1 = x1 + tx
+	y1 = y1 + ty
+	x2 = x2 + tx
+	y2 = y2 + ty
+	x3 = x3 + tx 
+	y3 = y3 + ty
+	triangle(x1, y1, x2, y2, x3, y3)
 }
